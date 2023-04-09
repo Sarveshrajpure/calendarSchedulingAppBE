@@ -1,0 +1,34 @@
+{
+  "name": "calendarschedulingappbe",
+  "version": "1.0.0",
+  "description": "Backend for calendar scheduling app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon server/server.js",
+    "server:prod": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sarveshrajpure/calendarSchedulingAppBE.git"
+  },
+  "author": "sarvesh rajpure",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sarveshrajpure/calendarSchedulingAppBE/issues"
+  },
+  "homepage": "https://github.com/Sarveshrajpure/calendarSchedulingAppBE#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-formidable": "^1.2.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-validator": "^6.15.0",
+    "http-status": "^1.6.2",
+    "joi-objectid": "^4.0.2",
+    "mongoose": "^7.0.3",
+    "nodemon": "^2.0.22",
+    "xss-clean": "^0.1.1"
+  }
+}
