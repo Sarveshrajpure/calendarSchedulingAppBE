@@ -23,12 +23,8 @@ if (connection) {
 app.use(express.json());
 
 // CORS
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
+// app.use(cors());
+app.options("*", cors());
 
 //SANITIZE JSON
 app.use(xss());
