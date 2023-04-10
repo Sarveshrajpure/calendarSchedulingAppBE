@@ -8,6 +8,13 @@ const routes = require("./routes");
 const { convertToApiError, handleError } = require("./middlewares/apiError");
 const cors = require("cors");
 
+// CORS
+app.use(
+  cors({
+    origin: "https://calendar-scheduling-frontend-app.onrender.com/",
+  })
+);
+
 //MongoDb Connection
 const mongoUri = `mongodb+srv://${process.env.DB_ADMIN}:${process.env.DB_PASS}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
 
@@ -21,10 +28,6 @@ if (connection) {
 
 //BODY PARSER
 app.use(express.json());
-
-// CORS
-// app.use(cors());
-app.options("*", cors());
 
 //SANITIZE JSON
 app.use(xss());
