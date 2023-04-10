@@ -5,7 +5,6 @@ const createSchedule = async (hours, enrollDate, schedule) => {
   try {
     let scheduleExits = await Schedule.scheduleExists(hours, enrollDate);
     if (!scheduleExits) {
-      console.log("in not ");
       let newSchedule = new Schedule({
         hours: hours,
         enrollDate: enrollDate,

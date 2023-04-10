@@ -8,7 +8,6 @@ const { scheduleService } = require("../services");
 
 const scheduleCalendar = async (req, res, next) => {
   try {
-    console.log(req.body);
     let values = await scheduleCalendarSchema.validateAsync(req.body);
 
     let events = constants.courseDetails;
@@ -16,7 +15,7 @@ const scheduleCalendar = async (req, res, next) => {
     let willingHours = values.hoursWillingToCommit;
 
     let enrollDate = scheduleService.formatDate(values.enrollDate);
-    console.log(enrollDate);
+
     let willingMinutes = willingHours * 60;
 
     let schedule = [];
@@ -26,7 +25,12 @@ const scheduleCalendar = async (req, res, next) => {
 
       nextDate.setDate(nextDate.getDate() + index);
       if (nextDate.getDay() % 6 === 0) {
-        nextDate.setDate(nextDate.getDate() + 2);
+        // check for saturday & sunday
+        if (nextDate.getDay() === 0) {
+          nextDate.setDate(nextDate.getDate() + 1);
+        } else {
+          nextDate.setDate(nextDate.getDate() + 2);
+        }
       }
 
       return nextDate;
@@ -58,14 +62,12 @@ const scheduleCalendar = async (req, res, next) => {
       res.status(httpStatus.OK).send({ message: "Enrollment Successfull!" });
     }
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
 
 const getSchedule = async (req, res, next) => {
   try {
-    console.log(req.query);
     let values = await getScheduleSchema.validateAsync({
       enrollDate: req.query.enrollDate,
       hoursWillingToCommit: req.query.hoursWillingToCommit,
@@ -84,7 +86,7 @@ const getSchedule = async (req, res, next) => {
 
     res.status(httpStatus.OK).send(schedule);
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
