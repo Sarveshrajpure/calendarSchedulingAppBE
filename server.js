@@ -23,9 +23,12 @@ if (connection) {
 app.use(express.json());
 
 // CORS
-app.use({
-  origin: "https://calendar-scheduling-frontend-app.onrender.com",
-});
+app.use(
+  cors({
+    origin: "https://calendar-scheduling-frontend-app.onrender.com",
+    credentials: true,
+  })
+);
 
 //SANITIZE JSON
 app.use(xss());
