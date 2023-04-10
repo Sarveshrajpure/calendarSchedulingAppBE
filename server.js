@@ -11,7 +11,7 @@ const cors = require("cors");
 // CORS
 app.use(
   cors({
-    origin: "https://calendar-scheduling-frontend-app.onrender.com/",
+    origin: "https://calendar-scheduling-frontend-app.onrender.com",
   })
 );
 
